@@ -23,13 +23,14 @@ $ npm install --save-dev babel-plugin-s2s-reducer-root
 
 ```
 // @flow
-import type { State as App } from "../../__fixtures__/app/reducer";
-import type { State as Bob } from "../../__fixtures__/bob/reducer";
+import { combineReducers } from 'redux';
+import App from "../__fixtures__/app/reducer";
+import Bob from "../__fixtures__/bob/reducer";
 
-export type State = {
-  App: App;
-  Bob: Bob;
-};
+export default combineReducers({
+  App,
+  Bob
+});
 ```
 
 
@@ -39,7 +40,7 @@ export type State = {
 {
   ['s2s-reducer-root', {
     input: 'containers/**/reducer.js',
-    output: 'types/state.js',
+    output: 'reducer.js',
     globOptions: {}
   }]
 }
